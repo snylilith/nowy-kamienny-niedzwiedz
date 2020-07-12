@@ -1,2 +1,2 @@
 # nowy-kamienny-niedzwiedz
-internetowy sklep rzezbiarza
+internetowy sklep rzeźbiarza
