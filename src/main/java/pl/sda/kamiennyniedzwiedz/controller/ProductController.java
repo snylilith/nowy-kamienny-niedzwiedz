@@ -1,5 +1,6 @@
 package pl.sda.kamiennyniedzwiedz.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.kamiennyniedzwiedz.model.dto.ProductDto;
 import pl.sda.kamiennyniedzwiedz.model.entity.ProductEntity;
@@ -16,18 +17,19 @@ public class ProductController {
 
     private ProductService productService;
 
-    public ProductController(ProductRepository productRepository) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
     @GetMapping("/products")
-    public List<ProductDto> getProducts() {
-        return (List<ProductDto>) productService.getAllProducts();
+    public ResponseEntity <List<ProductDto>> getProducts() {
+        return ResponseEntity.ok(productService.getAllProducts());
     }
 
     @PostMapping("/products")
-    void addProduct(ProductDto productDto) {
+    public ResponseEntity addProduct(ProductDto productDto) {
         productService.addProduct(productDto);
+        return ResponseEntity.ok().build();
     }
 
 }

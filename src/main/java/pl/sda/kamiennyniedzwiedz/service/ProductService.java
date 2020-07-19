@@ -13,6 +13,10 @@ import java.util.List;
 public class ProductService {
     private ProductRepository productRepository;
 
+    public ProductService (ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
     public List<ProductDto> getAllProducts() {
         List< ProductEntity > productList = productRepository.findAll();
         return ProductMapper.INSTANCE.productListToDto(productList);
